@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../utils/images/netflix-logo.png";
+import logo from "../assets/images/netflix-logo.png";
 
 const Header = () => {
   return (
