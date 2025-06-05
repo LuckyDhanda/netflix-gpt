@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
-import backgroundImg from "../assets/images/netflix-background-image.jpg";
+import backgroundImg from "../assets/images/netflix-background-image.webp";
 import { checkValidateData } from "../utils/validate";
 
 const Login = () => {
@@ -39,7 +39,7 @@ const Login = () => {
           onSubmit={(e) => {
             e.preventDefault();
           }}
-          className="bg-black bg-opacity-70 p-10 rounded-md flex flex-col w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3"
+          className="bg-black bg-opacity-70 px-10 py-16 rounded-md flex flex-col w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3"
         >
           <h2 className="text-3xl font-bold pb-4 ">
             {isSignInForm ? "Sign In" : "Sign Up"}
