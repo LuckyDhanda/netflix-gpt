@@ -1,17 +1,30 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
 import backgroundImg from "../assets/images/netflix-background-image.webp";
+
 import { checkValidateData } from "../utils/validate";
+
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
   };
 
-  // form validation
+  // Refs to access input values directly without using state
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -21,8 +34,67 @@ const Login = () => {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
-    const validationStatus = checkValidateData(name, email, password);
-    setErrorMessage(validationStatus);
+    // Validate input data
+    const validationStatusMessage = checkValidateData(name, email, password);
+    setErrorMessage(validationStatusMessage);
+
+    if (validationStatusMessage) {
+      return;
+    }
+
+    if (!isSignInForm) {
+      // SIGN UP Flow
+      createUserWithEmailAndPassword(
+        auth,
+        emailRef.current.value,
+        passwordRef.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+
+          // Update user profile with display name and photo
+          updateProfile(user, {
+            displayName: name,
+            photoURL:
+              "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=",
+          })
+            .then(() => {
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              navigate("/browse"); // Navigate to Browse page after successful signup and profile update
+            })
+            .catch((error) => {
+              setErrorMessage(error.message); // Handle profile update errors
+            });
+        })
+        .catch((error) => {
+          // Handle sign-up errors
+          setErrorMessage(error.message);
+        });
+    } else {
+      // SIGN IN Flow
+      signInWithEmailAndPassword(
+        auth,
+        emailRef.current.value,
+        passwordRef.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          // console.log(user);
+          navigate("/browse"); // after sign in, user will be redirected to browse page
+        })
+        .catch((error) => {
+          // Handle sign-in errors
+          setErrorMessage(error.message);
+        });
+    }
   };
 
   return (
