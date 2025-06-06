@@ -10,14 +10,13 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const toggleSignInForm = () => {
@@ -68,7 +67,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse"); // Navigate to Browse page after successful signup and profile update
             })
             .catch((error) => {
               setErrorMessage(error.message); // Handle profile update errors
@@ -88,7 +86,6 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           // console.log(user);
-          navigate("/browse"); // after sign in, user will be redirected to browse page
         })
         .catch((error) => {
           // Handle sign-in errors
