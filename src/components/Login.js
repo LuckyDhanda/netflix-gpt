@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
 import backgroundImg from "../assets/images/netflix-background-image.webp";
+import { photoURL } from "../utils/constants";
 
 import { checkValidateData } from "../utils/validate";
 
@@ -54,8 +55,7 @@ const Login = () => {
           // Update user profile with display name and photo
           updateProfile(user, {
             displayName: name,
-            photoURL:
-              "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=",
+            photoURL: photoURL,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;

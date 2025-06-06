@@ -64,7 +64,7 @@ const Header = () => {
         <div className="relative" onClick={handleDropdown}>
           <img
             className="w-8 h-8 cursor-pointer"
-            src={user?.photoURL || userIcon}
+            src={userIcon}
             alt="user-icon"
           />
 
@@ -72,10 +72,17 @@ const Header = () => {
             <div className="absolute right-0 mt-2 w-40 bg-black text-white rounded shadow-lg py-2">
               <ul className="text-sm">
                 <li className="px-4 py-2 hover:bg-gray-800 cursor-pointer">
-                  {user.displayName}
+                  <div className="flex gap-2 items-center">
+                    <img
+                      src={user.photoURL}
+                      alt="User Avatar"
+                      className="w-8 h-8 rounded-full "
+                    />
+                    {user.displayName}
+                  </div>
                 </li>
                 <li
-                  className="px-4 py-2 hover:bg-gray-800 cursor-pointer"
+                  className="px-4 py-2 hover:bg-gray-800 cursor-pointer pl-10 text-red-500 font-bold"
                   onClick={handleSignOut}
                 >
                   Sign Out
