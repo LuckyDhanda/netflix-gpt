@@ -58,7 +58,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="p-8 bg-gradient-to-b from-black to-transparent flex justify-between relative z-10">
+    <div className="px-8 pt-8 bg-gradient-to-b from-black to-transparent fixed top-0 left-0 right-0 flex items-center justify-between">
       <img src={logo} alt="Logo" className="w-32 h-auto" />
       {user && (
         <div className="relative" onClick={handleDropdown}>

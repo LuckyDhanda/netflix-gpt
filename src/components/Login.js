@@ -103,7 +103,7 @@ const Login = () => {
         className="absolute top-0 left-0 w-full h-full object-cover -z-20"
       />
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 -z-10"></div>
-      <div className="flex justify-center items-center h-auto ">
+      <div className="flex justify-center items-center h-full ">
         <form
           onSubmit={(e) => {
             e.preventDefault();
