@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const navigate = useNavigate();
 
@@ -32,6 +33,15 @@ const Header = () => {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -58,7 +68,11 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="px-8 pt-8 bg-gradient-to-b from-black to-transparent fixed top-0 left-0 right-0 flex items-center justify-between">
+    <div
+      className={`py-6 px-10 fixed top-0 left-0 right-0 flex items-center justify-between z-50 transition-colors duration-300 ${
+        isScrolled ? "bg-black" : "bg-gradient-to-b from-black to-transparent"
+      }`}
+    >
       <img src={logo} alt="Logo" className="w-32 h-auto" />
       {user && (
         <div className="relative" onClick={handleDropdown}>

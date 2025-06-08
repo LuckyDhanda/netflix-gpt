@@ -1,5 +1,3 @@
-import React from "react";
-
 const BannerContent = ({ movieTitle, movieOverview }) => {
   return (
     <div className="absolute top-1/4 left-10 max-w-xl space-y-4 text-white drop-shadow-lg  ">

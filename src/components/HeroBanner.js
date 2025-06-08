@@ -1,5 +1,5 @@
 // Full-screen banner with trailer
-import React from "react";
+
 import TrailerPlayer from "./TrailerPlayer";
 import BannerContent from "./BannerContent";
 import { useSelector } from "react-redux";
