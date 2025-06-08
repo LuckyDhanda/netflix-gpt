@@ -2,18 +2,21 @@ import MovieList from "./MovieList";
 import { useSelector } from "react-redux";
 
 const SecondaryContainer = () => {
-  const nowPlayingMovies = useSelector(
-    (state) => state.movies.nowPlayingMovies
+  const { nowPlayingMovies, popularMovies, topRatedMovies } = useSelector(
+    (state) => state.movies
   );
-  if (!nowPlayingMovies) {
+
+  // Wait until all required movie lists are available
+  if (!nowPlayingMovies || !popularMovies || !topRatedMovies) {
     return null;
   }
 
-  console.log(nowPlayingMovies);
   return (
     <div className="w-full h-full bg-gray-900 text-white">
-      <div className="-mt-60">
-        <MovieList title={"Now Playing "} movies={nowPlayingMovies} />
+      <div className="-mt-60 space-y-6">
+        <MovieList title="Now Playing" movies={nowPlayingMovies} />
+        <MovieList title="Popular" movies={popularMovies} />
+        <MovieList title="Top Rated" movies={topRatedMovies} />
       </div>
     </div>
   );
