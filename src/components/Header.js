@@ -18,9 +18,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
   const user = useSelector((store) => store.user);
-
   const searchView = useSelector((store) => store.search.showSearchView);
 
   const handleDropdown = () => {
@@ -43,7 +41,7 @@ const Header = () => {
 
   useEffect(() => {
     const onScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", onScroll);
@@ -76,11 +74,19 @@ const Header = () => {
 
   return (
     <div
-      className={`py-6 px-10 fixed top-0 left-0 right-0 flex items-center justify-between z-2 transition-colors duration-300 ${
+      className={`py-6 px-10 fixed top-0 left-0 right-0 flex items-center justify-between z-[4] transition-colors duration-300 ${
         isScrolled ? "bg-black" : "bg-gradient-to-b from-black to-transparent"
       }`}
     >
-      <img src={logo} alt="Logo" className="w-32 h-auto" />
+      <a href="/browse">
+        {" "}
+        <img
+          src={logo}
+          alt="Logo"
+          className="w-32 h-auto cursor-pointer hover:opacity-90 transition"
+        />
+      </a>
+
       {user && (
         <div className="flex gap-4">
           <button

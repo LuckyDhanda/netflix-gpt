@@ -36,7 +36,7 @@ const MovieSearchBar = () => {
   };
 
   return (
-    <div className="relative z-3 w-[50%] ">
+    <div className="relative z-30 w-[50%] ">
       <form
         className="bg-black flex rounded"
         onSubmit={(e) => e.preventDefault()}

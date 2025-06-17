@@ -100,9 +100,9 @@ const Login = () => {
       <img
         src={backgroundImg}
         alt="background"
-        className="absolute top-0 left-0 w-full h-full object-cover -z-20"
+        className="absolute top-0 left-0 w-full h-full object-cover -z-[30]"
       />
-      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 -z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 -z-20"></div>
       <div className="flex justify-center items-center h-full ">
         <form
           onSubmit={(e) => {
