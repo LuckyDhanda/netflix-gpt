@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import WatchTrailerButton from "./WatchTrailerButton";
 
 const MovieSuggestions = () => {
   const results = useSelector((state) => state.movieSuggestions.results);
@@ -37,9 +38,7 @@ const MovieSuggestions = () => {
               </p>
             )}
           </div>
-          <button className="px-4 py-2 m-4 bg-slate-700 text-white rounded-md hover:bg-slate-600 hover:scale-105 transition-all duration-300 shadow cursor-pointer">
-            🎬 Watch Trailer
-          </button>
+          <WatchTrailerButton />
         </div>
       ))}
     </div>

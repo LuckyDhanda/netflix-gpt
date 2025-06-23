@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import useNowPlayingMovies from "../customHooks/useNowPlayingMovies";
 import usePopularMovies from "../customHooks/usePopularMovies";
 import useTopRatedMovies from "../customHooks/useTopRatedMovies";
+import useUpcomingMovies from "../customHooks/useUpcomingMovies";
 
 import Header from "./Header";
 import HeroBanner from "./HeroBanner";
@@ -15,6 +16,7 @@ const Browse = () => {
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
+  useUpcomingMovies();
 
   return (
     <div>
