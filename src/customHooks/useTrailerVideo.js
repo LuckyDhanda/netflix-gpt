@@ -13,7 +13,6 @@ const useTrailerVideo = (movieId) => {
       API_OPTIONS
     );
     const data = await response.json();
-    // console.log(data);
 
     const movieTrailer = data.results.find((video) => video.type === "Clip");
     if (movieTrailer === undefined) {
@@ -25,7 +24,7 @@ const useTrailerVideo = (movieId) => {
 
   useEffect(() => {
     fetchMovieData();
-  }, []);
+  }, [movieId, dispatch]);
 };
 
 export default useTrailerVideo;
