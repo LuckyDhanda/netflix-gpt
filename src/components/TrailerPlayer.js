@@ -7,9 +7,9 @@ const TrailerPlayer = ({ movieId }) => {
   const trailerVideo = useSelector((state) => state.movies.trailerVideo);
 
   return (
-    <div>
+    <div className="">
       <iframe
-        className="w-[100vw] h-[100vh]"
+        className="w-[100vw] h-[60vh] md:h-[100vh]"
         src={`https://www.youtube.com/embed/${trailerVideo?.key}?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=1&playlist=${trailerVideo?.key}`}
         title="YouTube video player"
         allow="autoplay"

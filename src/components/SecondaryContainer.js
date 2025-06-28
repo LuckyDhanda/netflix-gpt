@@ -20,7 +20,7 @@ const SecondaryContainer = () => {
 
   return (
     <div className="w-full h-full bg-gray-900 text-white">
-      <div className="-mt-60 space-y-6">
+      <div className="md:-mt-60 space-y-6">
         {validSections.map(({ title, movies }) => (
           <MovieList key={title} title={title} movies={movies} />
         ))}

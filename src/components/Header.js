@@ -79,7 +79,6 @@ const Header = () => {
       }`}
     >
       <a href="/browse">
-        {" "}
         <img
           src={logo}
           alt="Logo"
@@ -89,49 +88,47 @@ const Header = () => {
 
       {user && (
         <div className="flex gap-4">
-          <button
-            onClick={handleSearchClick}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-200 opacity-50 text-black rounded-full hover:bg-gray-200 transition-all duration-300 shadow-md hover:shadow-lg"
-          >
-            {searchView ? (
-              <p>Go To Home</p>
-            ) : (
-              <>
-                🔍 <span className="font-medium">Search</span>
-              </>
-            )}
-          </button>
+          {!searchView && (
+            <button
+              onClick={handleSearchClick}
+              className="flex items-center gap-2 px-4 py-2 bg-gray-200 opacity-50 text-black rounded-full hover:bg-gray-200 transition-all duration-300 shadow-md hover:shadow-lg"
+            >
+              Search
+            </button>
+          )}
 
-          <div className="relative" onClick={handleDropdown}>
-            <img
-              className="w-10 h-10 cursor-pointer"
-              src={userIcon}
-              alt="user-icon"
-            />
+          {!searchView && (
+            <div className="relative" onClick={handleDropdown}>
+              <img
+                className="w-10 h-10 cursor-pointer"
+                src={userIcon}
+                alt="user-icon"
+              />
 
-            {isDropdownVisible && (
-              <div className="absolute right-0 mt-2 w-48 bg-black text-white rounded-lg shadow-lg py-2 border border-gray-700">
-                <ul className="text-sm space-y-1">
-                  <li className="px-4 py-2 hover:bg-gray-800 cursor-pointer">
-                    <div className="flex gap-2 items-center">
-                      <img
-                        src={user.photoURL}
-                        alt="User Avatar"
-                        className="w-8 h-8 rounded-full border border-white"
-                      />
-                      <span className="font-medium">{user.displayName}</span>
-                    </div>
-                  </li>
-                  <li
-                    className="px-4 py-2 hover:bg-gray-800 cursor-pointer pl-10 text-red-500 font-semibold"
-                    onClick={handleSignOut}
-                  >
-                    Sign Out
-                  </li>
-                </ul>
-              </div>
-            )}
-          </div>
+              {isDropdownVisible && (
+                <div className="absolute right-0 mt-2 w-48 bg-black text-white rounded-lg shadow-lg py-2 border border-gray-700">
+                  <ul className="text-sm space-y-1">
+                    <li className="px-4 py-2 hover:bg-gray-800 cursor-pointer">
+                      <div className="flex gap-2 items-center">
+                        <img
+                          src={user.photoURL}
+                          alt="User Avatar"
+                          className="w-8 h-8 rounded-full border border-white"
+                        />
+                        <span className="font-medium">{user.displayName}</span>
+                      </div>
+                    </li>
+                    <li
+                      className="px-4 py-2 hover:bg-gray-800 cursor-pointer pl-10 text-red-500 font-semibold"
+                      onClick={handleSignOut}
+                    >
+                      Sign Out
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>

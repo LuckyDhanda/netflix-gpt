@@ -124,7 +124,7 @@ const Login = () => {
           <input
             ref={emailRef}
             type="email"
-            placeholder="Email or mobile number"
+            placeholder="Email"
             className="p-3 m-4 rounded-md bg-inherit border border-gray-400 border-solid focus:outline-none focus:ring-0 text-gray-400"
           />
           <input
