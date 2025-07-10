@@ -7,7 +7,7 @@ const BannerContent = ({ movieTitle, movieOverview }) => {
   const trailerVideo = useSelector((state) => state.movies.trailerVideo);
 
   return (
-    <div className="absolute top-[34%] md:top-1/4 left-4 right-4 md:left-10 max-w-xl md:space-y-4 text-white drop-shadow-lg z-10">
+    <div className="absolute top-[34%] md:top-1/4 left-4 right-4 md:left-10 max-w-xl md:space-y-4 z-0 text-white drop-shadow-lg z-10">
       <h1 className="text-2xl md:text-5xl font-extrabold tracking-wide drop-shadow-md">
         {movieTitle}
       </h1>

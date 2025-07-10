@@ -14,7 +14,7 @@ const useTrailerVideo = (movieId) => {
     );
     const data = await response.json();
 
-    const movieTrailer = data.results.find((video) => video.type === "Clip");
+    const movieTrailer = data.results.find((video) => video.type === "Trailer");
     if (movieTrailer === undefined) {
       console.log("No trailer found for this movie.");
     }
